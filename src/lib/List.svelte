@@ -11,10 +11,10 @@
         pokeListOriginal = await res.json();
         console.log(pokeListOriginal);
         numberSort();
-        currentSort = "number";
     });
 
     const numberSort = () => {
+        currentSort = "number";
         pokeList = pokeListOriginal.map((x) => x);
         pokeList.sort((a, b) => {
             return a.no - b.no;
@@ -22,6 +22,7 @@
     };
 
     const nameSort = () => {
+        currentSort = "name";
         pokeList = pokeListOriginal.map((x) => x);
         pokeList.sort((a, b) => {
             if (a.name < b.name) {
@@ -35,6 +36,7 @@
     };
 
     const typeSort = () => {
+        currentSort = "type";
         pokeList = pokeListOriginal.map((x) => x);
         pokeList.sort((a, b) => {
             if (a.types < b.types) {
@@ -48,6 +50,7 @@
     };
 
     const abilitySort = () => {
+        currentSort = "ability";
         pokeList = pokeListOriginal.map((x) => x);
         pokeList.sort((a, b) => {
             if (a.abilities < b.abilities) {
@@ -65,32 +68,17 @@
     <thead>
         <tr>
             <th />
-            <th
-                on:click={numberSort}
-                on:click={() => {
-                    currentSort = "number";
-                }}
-                class:selected={currentSort === "number"}>No.</th
+            <th on:click={numberSort} class:selected={currentSort === "number"}
+                >No.</th
             >
-            <th
-                on:click={nameSort}
-                on:click={() => {
-                    currentSort = "name";
-                }}
-                class:selected={currentSort === "name"}>Name</th
+            <th on:click={nameSort} class:selected={currentSort === "name"}
+                >Name</th
             >
-            <th
-                on:click={typeSort}
-                on:click={() => {
-                    currentSort = "type";
-                }}
-                class:selected={currentSort === "type"}>Type</th
+            <th on:click={typeSort} class:selected={currentSort === "type"}
+                >Type</th
             >
             <th
                 on:click={abilitySort}
-                on:click={() => {
-                    currentSort = "ability";
-                }}
                 class:selected={currentSort === "ability"}>Ability</th
             >
         </tr>
